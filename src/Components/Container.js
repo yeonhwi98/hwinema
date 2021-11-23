@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 const SContainer = styled.section`
-  padding: 0 80px;
+  padding: 0 100px;
   height: 100%;
 `;
 
-export const Container = () => {
-  return <SContainer></SContainer>;
+export const Container = ({ children }) => {
+  return <SContainer>{children}</SContainer>;
 };

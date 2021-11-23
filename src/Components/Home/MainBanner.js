@@ -15,6 +15,7 @@ const Title = styled.div`
   font-size: 100px;
   font-weight: ${mainWeight.titleWeight};
   margin-bottom: 20px;
+  color: white;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
 `;
 const Desc = styled.p`
@@ -24,6 +25,8 @@ const Desc = styled.p`
   width: 100%;
   font-size: 40px;
   opacity: 0.8;
+  color: white;
+
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   letter-spacing: 4px;
 `;

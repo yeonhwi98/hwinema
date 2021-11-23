@@ -14,6 +14,7 @@ const SHeader = styled.header`
   justify-content: space-between;
   align-items: center;
   background-color: rgba(255, 255, 255, 0.5);
+  z-index: 100;
 `;
 const Logo = styled.div`
   font-size: 25px;
@@ -41,6 +42,7 @@ const Menu = styled.div`
 const Hamburger = styled.div`
   font-size: 40px;
   cursor: pointer;
+  color: white;
 `;
 
 export const Header = () => {

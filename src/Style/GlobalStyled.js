@@ -2,8 +2,8 @@ import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
 export const mainColor = {
-  fontColor: "white",
-  bgColor: "#1d1d1d",
+  fontColor: "black",
+  bgColor: "white",
 };
 
 export const mainWeight = {
