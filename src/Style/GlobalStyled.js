@@ -1,12 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
 
-const mainFontColor = {
+export const mainColor = {
   fontColor: "white",
+  bgColor: "#1d1d1d",
 };
 
-const mainBgColor = {
-  bgColor: "#103952",
+export const mainWeight = {
+  titleWeight: 600,
 };
 
 export const GlobalStyled = createGlobalStyle`
@@ -17,11 +18,15 @@ export const GlobalStyled = createGlobalStyle`
     box-sizing:border-box;
   }
 
+  a{
+    color:${mainColor.fontColor}
+  }
+
   body{
     font-family: 'Noto Sans KR', sans-serif;
-    background-color: ${mainBgColor.bgColor};
+    background-color: ${mainColor.bgColor};
     letter-spacing: -1px;
-    color: ${mainFontColor.fontColor};
+    color: ${mainColor.fontColor};
   }
 
 `;
