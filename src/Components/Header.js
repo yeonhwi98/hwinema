@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import { router } from "../router";
 import styled from "styled-components";
+import { useState } from "react";
 
 const SHeader = styled.header`
   width: 100%;
   height: 100px;
-  position: fixed;
+  position: ${(props) => props.fixed};
   top: 0;
   left: 0;
   padding: 0 100px;
@@ -43,8 +44,24 @@ const Hamburger = styled.div`
 `;
 
 export const Header = () => {
+  const [bg, setBg] = useState();
+  const [fix, setFix] = useState();
+
+  const handleScroll = () => {
+    const sct = window.pageYOffset;
+    if (sct >= 500) {
+      setBg("rgba(0,0,0,0.7)");
+      setFix("fixed");
+    } else {
+      setBg("transparent");
+      setFix("absolute");
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+
   return (
-    <SHeader>
+    <SHeader bgColor={bg} fixed={fix}>
       <Logo>
         <Link to={router.home}>HWINEMA START</Link>
       </Logo>
