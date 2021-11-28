@@ -6,13 +6,13 @@ import { useParams } from "react-router-dom";
 import { PageNotfound } from "../../PageNotFound";
 import { Loader } from "../Loader";
 import { Container } from "../Container";
-import { mainWeight } from "../../Style/GlobalStyled";
+import { mainWeight, moSize } from "../../Style/GlobalStyled";
 import { mainColor } from "../../Style/GlobalStyled";
 
 const Wrap = styled.div`
   display: flex;
   width: 100%;
-  height: 95vh;
+  height: 100vh;
   background-size: cover;
   background-position: center;
 `;
@@ -23,6 +23,10 @@ const ConWrap = styled.div`
   width: 50%;
   margin-left: 50px;
   float: left;
+  @media screen and (max-width: 500px) {
+    margin-left: 0;
+    width: 60%;
+  }
 `;
 const Title = styled.div`
   font-size: 80px;
@@ -31,6 +35,10 @@ const Title = styled.div`
   margin-top: 250px;
   color: white;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+  @media screen and (max-width: 500px) {
+    font-size: ${moSize.titleSize};
+    margin-top: 150px;
+  }
 `;
 const Desc = styled.div`
   width: 90%;
@@ -41,6 +49,12 @@ const Desc = styled.div`
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   line-height: 2rem;
   opacity: 0.9;
+  @media screen and (max-width: 500px) {
+    font-size: ${moSize.descSize};
+    line-height: 1.2rem;
+    margin-top: 50px;
+    font-weight: 300;
+  }
 `;
 const Button = styled.button`
   all: unset;
@@ -61,7 +75,7 @@ const Button = styled.button`
   }
 
   @media screen and (max-width: 500px) {
-    padding: 15px 40px;
+    display: none;
   }
 `;
 const TextWrap = styled.div`
@@ -76,7 +90,7 @@ const ContentWrap = styled.div`
   border-left: 1.5px solid white;
 `;
 const Contents = styled.div`
-  margin-top: 130px;
+  margin-top: 95px;
   margin-left: 50px;
   color: ${mainColor.bgColor};
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
@@ -87,12 +101,42 @@ const Contents = styled.div`
     font-weight: 900;
     font-size: 30px;
     margin-bottom: 15px;
+    @media screen and (max-width: 500px) {
+      font-size: ${moSize.descSize};
+    }
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+  }
+`;
+
+const VideoWrap = styled.div`
+  width: 32%;
+  height: 45%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 99;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+  }
+`;
+const Video = styled.iframe`
+  width: 100%;
+  height: 40vh;
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    margin-top: 350px;
   }
 `;
 
 export const Detail = () => {
   const { id } = useParams();
   const [movieData, setMovieData] = useState();
+  const [videoData, setViedeoData] = useState();
   const [loading, setLoading] = useState(true);
   const [errorPage, setErrorPage] = useState(false);
 
@@ -102,6 +146,11 @@ export const Detail = () => {
         const { data } = await movieApi.detail(id);
         setMovieData(data);
 
+        const {
+          data: { results },
+        } = await movieApi.video(id);
+        setViedeoData(results[0]);
+
         setLoading(false);
       } catch (error) {
         setErrorPage(true);
@@ -110,7 +159,16 @@ export const Detail = () => {
     MovieDetail();
   }, [id]);
 
-  console.log(movieData);
+  const onClickVideo = () => {
+    const videoWrapTop = document.querySelector(".video_wrap").offsetTop;
+    window.scrollTo({
+      top: videoWrapTop,
+      left: 0,
+      behavior: "smooth",
+    });
+  };
+
+  // console.log(movieData);
 
   return (
     <div>
@@ -138,7 +196,7 @@ export const Detail = () => {
                           <Desc>
                             {movieData.overview.slice(0, 300) + "..."}
                           </Desc>
-                          <Button>
+                          <Button onClick={onClickVideo}>
                             더 보기
                             <div>&rarr;</div>
                           </Button>
@@ -167,6 +225,16 @@ export const Detail = () => {
                     </Container>
                   </Wrap>
                 </>
+              )}
+
+              {videoData && (
+                <Container>
+                  <VideoWrap className="video_wrap">
+                    <Video
+                      src={`https://www.youtube.com/embed/${videoData.key}`}
+                    ></Video>
+                  </VideoWrap>
+                </Container>
               )}
             </div>
           )}

@@ -56,6 +56,10 @@ const Hamburger = styled.div`
   font-size: 40px;
   cursor: pointer;
   color: white;
+  display: none;
+  @media screen and (max-width: 500px) {
+    display: block;
+  }
 `;
 
 export const Header = () => {

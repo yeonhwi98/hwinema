@@ -12,4 +12,11 @@ export const movieApi = {
   nowPlaying: () => api.get("movie/now_playing"),
   upComming: () => api.get("movie/upcoming"),
   detail: (id) => api.get(`movie/${id}`),
+  video: (movie_id) => api.get(`movie/${movie_id}/videos`),
+  search: (term) =>
+    api.get(`search/movie`, {
+      params: {
+        query: encodeURIComponent(term),
+      },
+    }),
 };
