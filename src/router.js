@@ -1,6 +1,6 @@
 export const router = {
   home: "/",
-  detail: "/detail",
+  detail: "/detail:id",
   contact: "/contact",
   search: "/search",
 };

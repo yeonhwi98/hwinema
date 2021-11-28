@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { router } from "../router";
 import styled from "styled-components";
 import { useState } from "react";
+import { moSize } from "../Style/GlobalStyled";
 
 const SHeader = styled.header`
   width: 100%;
@@ -13,8 +14,12 @@ const SHeader = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: ${(props) => props.bgColor};
+  transition: 0.5s;
   z-index: 100;
+  @media screen and (max-width: 500px) {
+    padding: ${moSize.padding};
+  }
 `;
 const Logo = styled.div`
   font-size: 25px;
@@ -23,21 +28,29 @@ const Logo = styled.div`
     color: white;
   }
   letter-spacing: 5px;
+  @media screen and (max-width: 500px) {
+    font-size: 20px;
+  }
 `;
 const MenuWrap = styled.div`
   font-size: 20px;
   font-weight: 200;
   display: flex;
-  /* margin-right: 500px; */
 
   a {
     color: white;
+  }
+  @media screen and (max-width: 500px) {
+    width: 100%;
+    display: none;
   }
 `;
 const Menu = styled.div`
   display: flex;
   margin-right: 90px;
   letter-spacing: 2px;
+  @media screen and (max-width: 500px) {
+  }
 `;
 const Hamburger = styled.div`
   font-size: 40px;
@@ -51,11 +64,11 @@ export const Header = () => {
 
   const handleScroll = () => {
     const sct = window.pageYOffset;
-    if (sct >= 500) {
+    if (sct >= 400) {
       setBg("rgba(0,0,0,0.7)");
       setFix("fixed");
     } else {
-      setBg("transparent");
+      setBg("rgba(225,225,225,0.7)");
       setFix("absolute");
     }
   };

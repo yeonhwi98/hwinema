@@ -1,11 +1,14 @@
 import styled from "styled-components";
-import { mainWeight } from "../../Style/GlobalStyled";
+import { mainWeight, moSize } from "../../Style/GlobalStyled";
 
 const SMainBanner = styled.div`
   height: 90vh;
   padding: 400px 80px;
   background-size: cover;
   background-position: center;
+  @media screen and (max-width: 500px) {
+    padding: 220px 20px;
+  }
 `;
 const Title = styled.div`
   max-width: 1200px;
@@ -17,6 +20,10 @@ const Title = styled.div`
   margin-bottom: 20px;
   color: white;
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+  @media screen and (max-width: 500px) {
+    font-size: ${moSize.titleSize};
+    margin-top: 200px;
+  }
 `;
 const Desc = styled.p`
   /* max-width: 1200px; */
@@ -26,9 +33,11 @@ const Desc = styled.p`
   font-size: 40px;
   opacity: 0.8;
   color: white;
-
   text-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
   letter-spacing: 4px;
+  @media screen and (max-width: 500px) {
+    font-size: ${moSize.descSize};
+  }
 `;
 
 export const MainBanner = ({ data, num }) => {

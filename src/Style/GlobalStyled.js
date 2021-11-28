@@ -10,6 +10,13 @@ export const mainWeight = {
   titleWeight: 600,
 };
 
+export const moSize = {
+  padding: "0 20px",
+  titleSize: "45px",
+  descSize: "16px",
+  movieTitle: "14px",
+};
+
 export const GlobalStyled = createGlobalStyle`
   ${reset}
 
