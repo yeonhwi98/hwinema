@@ -70,7 +70,7 @@ export const Movies = ({ movieData, title }) => {
       >
         {movieData.map((play) => (
           <SwiperSlide key={play.id}>
-            <Link to="#">
+            <Link to={`/detail/${play.id}`}>
               <CoverImg
                 style={{
                   backgroundImage: `url(https://image.tmdb.org/t/p/original${play.backdrop_path})`,

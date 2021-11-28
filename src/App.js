@@ -3,7 +3,7 @@ import { GlobalStyled } from "./Style/GlobalStyled";
 import { router } from "./router";
 import { Header } from "./Components/Header";
 import { Home } from "./Components/Home/Home";
-import { Detail } from "./Components/Detail/Detai";
+import { Detail } from "./Components/Detail/Detail";
 import { Search } from "./Components/Search/Search";
 import { Contact } from "./Components/Contact/Contact";
 import { Footer } from "./Components/Footer";
@@ -21,7 +21,7 @@ function App() {
             <Home>home</Home>
           </Route>
           <Route path={router.detail}>
-            <Detail>detail</Detail>
+            <Detail>Detail</Detail>
           </Route>
           <Route path={router.search}>
             <Search>search</Search>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { movieApi } from "../../api";
+import { PageTitle } from "../../PageTitle";
 import { Container } from "../Container";
 import { Loader } from "../Loader";
 import { MainBanner } from "./MainBanner";
@@ -45,6 +46,7 @@ export const Home = () => {
 
   return (
     <div>
+      <PageTitle title="홈" />
       {loading ? (
         <Loader />
       ) : (
